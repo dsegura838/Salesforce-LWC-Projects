@@ -1,4 +1,4 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api, wire } from 'lwc';
 import {createRecord} from 'lightning/uiRecordApi';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 
@@ -10,6 +10,7 @@ import EXPERIENCE_OBJECT from '@salesforce/schema/Car_Experience__c';
 export default class AddCarExperience extends LightningElement {
 
     @api carId;
+
 
     expTitle = '';
     expDescription = '';
@@ -34,11 +35,16 @@ export default class AddCarExperience extends LightningElement {
 
         const recordInput = {apiName : EXPERIENCE_OBJECT.objectApiName, fields};
 
-        createRecord(recordInput).then( carExperience =>{
-            this.showToast('SUCCESS', 'Experience Record Updated', 'success');
-        }).catch( error =>{
-            this.showToast('ERROR', error.body.message, 'error');
-        });
+        if(this.carId != undefined){
+            createRecord(recordInput).then( (carExperience) =>{
+                this.showToast('SUCCESS', 'Experience Record Updated', 'success');
+            }).catch( error =>{
+                this.showToast('ERROR', error.body.message, 'error');
+            });
+        } else{
+            console.log('CarId not found');
+        }
+        
 
     }
 

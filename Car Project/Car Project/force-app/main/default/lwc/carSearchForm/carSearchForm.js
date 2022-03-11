@@ -22,6 +22,7 @@ export default class CarSearchForm extends NavigationMixin(LightningElement) {
     }
 
     handleCarTypeChange(event){
+        console.log('Type was changed');
         const carTypeId = event.detail.value;
 
         const carTypeSelectionChangeEvent = new CustomEvent('cartypeselect', {detail : carTypeId});

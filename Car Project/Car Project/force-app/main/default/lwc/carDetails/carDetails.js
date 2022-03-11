@@ -44,7 +44,7 @@ export default class CarDetails extends LightningElement {
     }
 
     callBackMethod(payload){
-        console.log('Assigning the payload');
+        console.log('Assigning the payload: '+this.carId);
         this.carId = payload;
 
     }

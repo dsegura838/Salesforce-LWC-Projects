@@ -22,15 +22,15 @@ export default class CarSearchResult extends LightningElement {
         })
     }
 
-    // @wire(getCars, {carTypeId : '$carTypeId'})
-    // wiredCars({data, error}){
-    //     if(data){
-    //         this.cars = data;
-    //         console.log('data = true');
-    //     } else if(error){
-    //         this.showToast('ERROR', error.body.message, 'error');
-    //     }
-    // }
+    @wire(getCars, {carTypeId : '$carTypeId'})
+    wiredCars({data, error}){
+        if(data){
+            this.cars = data;
+            console.log('data = true');
+        } else if(error){
+            this.showToast('ERROR', error.body.message, 'error');
+        }
+    }
     
 
     
