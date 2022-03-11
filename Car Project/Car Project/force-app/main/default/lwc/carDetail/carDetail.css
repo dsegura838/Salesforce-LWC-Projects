@@ -1,0 +1,47 @@
+/*.label {
+    font-weight: bold;
+    display: block;
+  }
+  
+  .carproperty {
+    margin-bottom: 3px;
+  }
+  
+  .imageview {
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 200px;
+    margin: 2px;   
+  }
+  
+  .car{
+    border-radius: 5px;
+  }*/
+
+  .tile {
+    padding: 8px;
+    background-color: #FFFFFF;
+    border-radius: 0.25rem;
+  }
+  
+  a {
+  color: inherit;
+  }
+  
+  img.car {
+    height: 6rem;
+    max-width: initial;
+    pointer-events: none;
+  }
+  
+  .title {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .selected{
+    border-width: medium;
+    border-radius: 4px;
+    border-color: royalblue;
+    border-style: solid;
+  }
