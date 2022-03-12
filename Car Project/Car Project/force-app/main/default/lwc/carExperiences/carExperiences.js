@@ -5,15 +5,26 @@ import {NavigationMixIn} from 'lightning/navigation';
 
 export default class CarExperiences extends LightningElement {
 
-    @api carId;
-    @track carExperiences;
+    privateCarId
+    @track carExperiences = [];
 
     connectedCallback(){
         this.getCarExperiences();
     }
 
+    @api
+    get carId(){
+        return this.privateCarId;
+    }
+
+    set carId(value){
+        this.privateCarId = value;
+        this.getCarExperiences();
+    }
+
+    @api
     getCarExperiences(){
-        getExperiences({carId : this.carId}).then((experiences)=>{
+        getExperiences({carId : this.privateCarId}).then((experiences)=>{
             this.carExperiences = experiences;
             console.log('Get Experiences worked');
             if(experiences.length <= 0){
@@ -29,7 +40,7 @@ export default class CarExperiences extends LightningElement {
     }
 
     get hasExperiences(){
-        if(this.carExperiences){
+        if(this.carExperiences.length > 0){
             console.log('Experiences found');
             return true;
         }

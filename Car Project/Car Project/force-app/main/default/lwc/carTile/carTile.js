@@ -18,7 +18,7 @@ export default class CarTile extends LightningElement {
         const carSelect = new CustomEvent('carselect', {detail: this.car.Id});
         this.dispatchEvent(carSelect);
 
-        fireEvent(this.pageRef, 'carSelect', this.car.Id);
+        fireEvent(this.pageRef, 'carSelect', this.car);
     }
 
     get isCarSelected(){

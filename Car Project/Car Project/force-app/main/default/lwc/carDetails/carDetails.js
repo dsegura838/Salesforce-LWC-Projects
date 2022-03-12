@@ -29,7 +29,8 @@ const fields = [
 
 export default class CarDetails extends LightningElement {
 
-    carId;
+    //make these reactive
+    @track carId;
     @track selectedTabValue;
 
     @wire(CurrentPageReference) pageRef;
@@ -45,7 +46,7 @@ export default class CarDetails extends LightningElement {
 
     callBackMethod(payload){
         console.log('Assigning the payload: '+this.carId);
-        this.carId = payload;
+        this.carId = payload.Id;
 
     }
 
@@ -57,9 +58,20 @@ export default class CarDetails extends LightningElement {
         this.selectedTabValue = event.target.value;
     }
 
+    //example of calling a method from a child component
+    experienceAddedHandler(){
+        const carExperienceComponent = this.template.querySelector('c-car-experience');
+        if(carExperienceComponent){
+            carExperienceComponent.getCarExperiences();
+        }
+        //changing the tab the user sees
+        this.selectedTabValue = 'viewexperience';
+    }
+
     get carFound(){
-        if(this.car){
-            
+        if(this.car && this.carId != undefined){
+            console.log('carFound: '+ this.carId);
+            console.log('carFound: '+this.car);
             return true;
         }
         return false;

@@ -74,4 +74,12 @@ export default class CarDetail extends LightningElement {
             return 'NA';
         }
     }
+
+    get carExists(){
+        if (this.carName != 'NA'){
+            return true
+        }else{
+            return false;
+        }
+    }
 }

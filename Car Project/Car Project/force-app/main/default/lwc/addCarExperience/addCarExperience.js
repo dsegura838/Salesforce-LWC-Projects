@@ -38,6 +38,8 @@ export default class AddCarExperience extends LightningElement {
         if(this.carId != undefined){
             createRecord(recordInput).then( (carExperience) =>{
                 this.showToast('SUCCESS', 'Experience Record Updated', 'success');
+                const recordAdded = new CustomEvent('experienceadded');
+                this.dispatchEvent(recordAdded);
             }).catch( error =>{
                 this.showToast('ERROR', error.body.message, 'error');
             });
